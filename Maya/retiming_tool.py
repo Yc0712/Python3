@@ -6,7 +6,7 @@ from PySide2 import QtCore
 from shiboken2 import wrapInstance
 
 import maya.OpenMayaUI as omui
-import maya.OpenMaya as om
+import maya.api.OpenMaya as om
 
 import traceback
 
@@ -119,7 +119,6 @@ class MM_RetimingUi(QtWidgets.QWidget):
     def maya_main_window(cls):
 
         maya_window_ptr = omui.MQtUtil.mainWindow()
-
         return wrapInstance(int(maya_window_ptr), QtWidgets.QWidget)
 
     def __init__(self, parent=None):
