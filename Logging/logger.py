@@ -1,14 +1,13 @@
 import logging
 import sys
 
-class Logger(object):
 
+class Logger(object):
     LOGGER_NAME = "Yuchao"
 
     LEVEL_DEFAULT = logging.DEBUG
 
     _logger_obj = None
-
 
     @classmethod
     def logger_obj(cls):
@@ -103,4 +102,3 @@ if __name__ == "__main__":
         b = a[0]
     except:
         Logger.exception("exception message")
-
