@@ -1,13 +1,12 @@
 import sys
+
 from PySide2 import QtCore
 from PySide2 import QtWidgets
 
 
 class StandaloneWindow(QtWidgets.QMainWindow):
-
     FILE_FILTERS = "Text Files (*.txt);;All Files (*.*)"
     selected_filter = "All Files (*.*)"
-
 
     def __init__(self):
         super(StandaloneWindow, self).__init__(parent=None)
@@ -23,13 +22,13 @@ class StandaloneWindow(QtWidgets.QMainWindow):
         self.create_widgets()
         self.create_layout()
         self.create_connections()
-        
+
     def create_menu(self):
         self.file_open_action = QtWidgets.QAction("Open...")
 
         file_menu = QtWidgets.QMenu("File")
         file_menu.addAction(self.file_open_action)
-        
+
         menu_bar = QtWidgets.QMenuBar()
         menu_bar.addMenu(file_menu)
 
@@ -58,10 +57,11 @@ class StandaloneWindow(QtWidgets.QMainWindow):
         self.file_system_watcher.directoryChanged.connect(self.update_file_count)
 
     def open_file(self):
-        file_path, self.selected_filter = QtWidgets.QFileDialog.getOpenFileName(self, "Select a File", "", self.FILE_FILTERS, self.selected_filter)
+        file_path, self.selected_filter = QtWidgets.QFileDialog.getOpenFileName(self, "Select a File", "",
+                                                                                self.FILE_FILTERS, self.selected_filter)
         if file_path:
             self.file_info.setFile(file_path)
-            
+
         self.update_file()
         self.update_file_count()
         self.update_watched_paths()
@@ -114,6 +114,3 @@ if __name__ == "__main__":
 
     # Enter Qt main loop (start event handling)
     app.exec_()
-
-
-
